@@ -209,7 +209,6 @@ def run(source: Path, out: Path):
       h('Limitaciones'),
       p(f'Nos faltó PM₂.₅ en {744-int(d.PM25_ug_m3.count())} horas. Basamos las categorías en tres contaminantes de los seis previstos. Nuestra hoja no incluye banderas instrumentales ni datos minuto a minuto para comprobar el criterio de 45 minutos por hora; por ello utilizamos los promedios horarios recibidos. No tenemos las horas de febrero necesarias para completar el NowCast al inicio del periodo. Aplicamos retrospectivamente una edición normativa posterior a las mediciones. En los empates no podemos asignar un solo contaminante responsable.'),
       PageBreak(),h('Bitácora del líder · propuesta para validación'),
-      p('Redactamos esta bitácora como propuesta a partir de las tareas del proyecto. Antes de entregarla debemos comprobar con cada integrante que las actividades y el cumplimiento describan su participación real.'),
       ]
     log_rows=[['Integrante','Actividades propuestas','Cumplimiento','Observaciones propuestas'],
       ['Eduardo Yoab Venegas García','Integración del análisis, revisión de la NOM y organización del reporte y repositorio.','Completo','Coordinación y seguimiento constante de las entregas.'],
