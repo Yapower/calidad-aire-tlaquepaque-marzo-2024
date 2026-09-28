@@ -19,7 +19,11 @@ La hoja corregida contiene 744 horas sin duplicados de marzo de 2024. Existen da
 
 La clasificación calcula O3 horario, NowCast de 12 horas para partículas y resúmenes diarios. Conserva los empates de categoría. La cobertura diaria de partículas requiere 18 horas; sólo 4 días tienen cobertura simultánea de los tres contaminantes. El reporte explica las demás limitaciones. Se usa retrospectivamente la NOM-172-SEMARNAT-2023 y sus bandas de partículas correspondientes a la etapa de 2024.
 
-Fuentes: [SEMADET, datos históricos](https://aire.jalisco.gob.mx/Dhistoricos) y [NOM-172-SEMARNAT-2023](https://sinaica.inecc.gob.mx/archivo/noms/NOM-172-SEMARNAT-2023-Indice-AIRE-y-SALUD.pdf).
+## Uso para Pollos Asados El ING
+
+El equipo ubica la pollería a **dos cuadras de la estación TLA**. El reporte distingue las lecturas exteriores de la calidad del aire dentro del negocio. Propone agilizar la atención exterior durante episodios y mejorar la operación del asador: extracción, limpieza de grasa, mantenimiento y control del humo evitable. Para evaluar su contribución se necesitarían registros de producción y mediciones adicionales; las lecturas de TLA por sí solas no permiten atribuirle las concentraciones ni cuantificar sus emisiones.
+
+Fuentes: [SEMADET, datos históricos](https://aire.jalisco.gob.mx/Dhistoricos), [NOM-172-SEMARNAT-2023](https://sinaica.inecc.gob.mx/archivo/noms/NOM-172-SEMARNAT-2023-Indice-AIRE-y-SALUD.pdf) y [EPA, partículas generadas al cocinar y medidas de control](https://www.epa.gov/indoor-air-quality-iaq/sources-indoor-particulate-matter-pm).
 
 Antes de la entrega escolar, completar la bitácora real del líder y confirmar el equipo y la nomenclatura Sprint 1/Sprint 2.
 
