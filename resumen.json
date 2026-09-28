@@ -1,0 +1,29 @@
+{
+  "days": 31,
+  "counts": {
+    "Aceptable": 18,
+    "Buena": 10,
+    "Mala": 3
+  },
+  "dominants_including_ties": {
+    "PM10": 20,
+    "PM2.5": 4,
+    "O3": 20
+  },
+  "full_coverage_days": 4,
+  "event_day": "2024-03-28",
+  "worst_days": [
+    {
+      "fecha": "2024-03-13",
+      "dominantes_d": "PM2.5"
+    },
+    {
+      "fecha": "2024-03-27",
+      "dominantes_d": "O3"
+    },
+    {
+      "fecha": "2024-03-28",
+      "dominantes_d": "O3"
+    }
+  ]
+}
