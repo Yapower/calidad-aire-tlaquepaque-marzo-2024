@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import math
+import shutil
 import sys
 from collections import Counter
 from decimal import Decimal, ROUND_HALF_UP
@@ -156,7 +157,9 @@ def run(source: Path, out: Path):
     p=lambda text:para(text,styles['BodyX'])
     h=lambda text:para(text,styles['H1X'])
     story=[para('Marzo de 2024 · Calidad del aire en Tlaquepaque',styles['TitleX']),
-           p('<b>Presentamos:</b> Pollos Asados El ING &nbsp; | &nbsp; <b>Estación:</b> TLA &nbsp; | &nbsp; <b>Alcance:</b> análisis retrospectivo'),
+           p('<b>Presentamos:</b> Pollos Asados El ING &nbsp; | &nbsp; <b>Equipo:</b> 4 &nbsp; | &nbsp; <b>Estación:</b> TLA'),
+           p('<b>Responsable de entrega:</b> Eduardo Yoab Venegas García &nbsp; | &nbsp; <b>Alcance:</b> análisis retrospectivo'),
+           p('<b>Integrantes:</b> Eduardo Yoab Venegas García, Jonathan Emmanuel Alcantar López y Ana Yoseline Acosta Arreola.'),
            p('<b>Estado de nuestro reporte:</b> completamos un análisis reproducible de los contaminantes disponibles. Nos faltan temperatura ambiente, humedad relativa, dirección del viento y el registro de participación para cumplir íntegramente la consigna.'),
            h('1. Fuente y preparación'),
            p('Trabajamos con nuestra hoja corregida de 744 horas consecutivas, del 1 al 31 de marzo, sin duplicados. Identificamos nuestra estación TLA mediante el campo STATION. Conservamos los campos ausentes como faltantes, sin interpolarlos. También preservamos los valores altos no negativos para revisarlos: con la información disponible no pudimos confirmar errores instrumentales.'),
@@ -205,22 +208,32 @@ def run(source: Path, out: Path):
       p('<b>Seguimiento para decidir:</b> registraríamos horarios y cantidad de pollos asados, combustible, limpieza y episodios visibles de humo. Compararíamos esos registros con PM₁₀, PM₂.₅ y O₃ de TLA y, si contamos con equipo adecuado, mediríamos dentro y cerca de nuestro local. Usaríamos el calendario para revisar los días 13, 27 y 28 y la serie horaria para decidir cuándo ajustar la operación. Con estos datos históricos no podemos cuantificar nuestras emisiones, la exposición del personal ni nuestra contribución a las lecturas de TLA. También nos falta la dirección del viento para evaluar una posible relación espacial.'),
       h('Limitaciones'),
       p(f'Nos faltó PM₂.₅ en {744-int(d.PM25_ug_m3.count())} horas. Basamos las categorías en tres contaminantes de los seis previstos. Nuestra hoja no incluye banderas instrumentales ni datos minuto a minuto para comprobar el criterio de 45 minutos por hora; por ello utilizamos los promedios horarios recibidos. No tenemos las horas de febrero necesarias para completar el NowCast al inicio del periodo. Aplicamos retrospectivamente una edición normativa posterior a las mediciones. En los empates no podemos asignar un solo contaminante responsable.'),
-      h('Bitácora del líder · pendiente de datos verificables'),
-      p('Integrante | Actividades realizadas | Cumplimiento | Observaciones'),
-      p('Antes de presentar la versión final, nuestro líder incorporará los nombres, las tareas y las evidencias reales del sprint, además de su valoración del equipo. Necesitamos confirmar si la bitácora corresponde al Sprint 1 o al Sprint 2, pues la consigna menciona ambos.'),
+      PageBreak(),h('Bitácora del líder · propuesta para validación'),
+      p('Redactamos esta bitácora como propuesta a partir de las tareas del proyecto. Antes de entregarla debemos comprobar con cada integrante que las actividades y el cumplimiento describan su participación real.'),
+      ]
+    log_rows=[['Integrante','Actividades propuestas','Cumplimiento','Observaciones propuestas'],
+      ['Eduardo Yoab Venegas García','Integración del análisis, revisión de la NOM y organización del reporte y repositorio.','Completo','Coordinación y seguimiento constante de las entregas.'],
+      ['Jonathan Emmanuel Alcantar López','Revisión del archivo TLA, valores faltantes y elaboración de la serie horaria.','Completo','Muy buen trabajo, participación activa y cuidado al revisar los datos.'],
+      ['Ana Yoseline Acosta Arreola','Apoyo en calendario diario, interpretación para la pollería y revisión de las conclusiones.','Completo','Muy buen trabajo, aportaciones claras y colaboración continua.']]
+    log_table=Table([[para(str(cell),styles['TableX']) for cell in row] for row in log_rows],colWidths=[3.8*cm,5.4*cm,2.4*cm,5.2*cm],repeatRows=1,hAlign='LEFT')
+    log_table.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),colors.HexColor('#e8eef2')),('GRID',(0,0),(-1,-1),.35,colors.HexColor('#d5dfe5')),('VALIGN',(0,0),(-1,-1),'TOP'),('ROWBACKGROUNDS',(0,1),(-1,-1),[colors.white,colors.HexColor('#f6f8fa')]),('LEFTPADDING',(0,0),(-1,-1),6),('RIGHTPADDING',(0,0),(-1,-1),6),('TOPPADDING',(0,0),(-1,-1),7),('BOTTOMPADDING',(0,0),(-1,-1),7)]))
+    story += [log_table,
+      p('<b>Valoración general propuesta:</b> trabajamos muy bien como equipo: repartimos tareas, colaboramos en la revisión y reunimos el análisis en un reporte reproducible. Para el siguiente sprint debemos mejorar la documentación de metadatos, conseguir las variables meteorológicas faltantes y registrar con mayor detalle las evidencias de participación.'),
+      p('La consigna menciona Sprint 1 como entrega final y Sprint 2 para la bitácora. Usamos <b>sp1</b> en el nombre del archivo por la indicación de entrega final del Sprint 1; recomendamos confirmar a cuál sprint debe corresponder la bitácora.'),
       h('Reproducción y fuentes'),
       p('Para reproducir nuestro análisis ejecutamos: <font name="DejaVu">python analizar_tlaquepaque.py "Hoja de cálculo sin título (1).xlsx" salida/</font>. Obtenemos dos CSV de indicadores, dos gráficas y este PDF. Compartimos el libro corregido y los resultados en '+REPO+'.'),
       para('Nuestra fuente de datos: hoja TLA, marzo de 2024. Portal de bases históricas de SEMADET: '+SOURCE+'<br/>Norma NOM-172-SEMARNAT-2023 (tablas 2–6 y Anexo A): '+NOM+'<br/>EPA, fuentes de partículas y medidas durante la cocción: https://www.epa.gov/indoor-air-quality-iaq/sources-indoor-particulate-matter-pm',styles['SmallX'])]
     pdf=out/'Reporte_Tlaquepaque_Pollos_Asados_El_ING.pdf'
     doc=SimpleDocTemplate(str(pdf),pagesize=(21*cm,29.7*cm),leftMargin=2*cm,rightMargin=2*cm,topMargin=1.7*cm,bottomMargin=1.5*cm)
     doc.build(story,onFirstPage=footer,onLaterPages=footer)
+    shutil.copyfile(pdf,out/'26B_AVI_d04_sp1_eq4_Venegas_Garcia_Eduardo_Yoab.pdf')
     summary={'days':len(daily),'counts':dict(counts),'dominants_including_ties':days_by_pol,'full_coverage_days':int(daily.cobertura_3_contaminantes.sum()),'event_day':str(event_day),'worst_days':worst[['fecha','dominantes_d']].to_dict('records')}
     (out/'resumen.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps(summary,ensure_ascii=False,indent=2))
 
 def footer(canvas,doc):
     canvas.saveState();canvas.setFont('DejaVu',8);canvas.setFillColor(colors.grey)
-    canvas.drawString(2*cm,1*cm,'Pollos Asados El ING · Estación TLA · Marzo 2024')
+    canvas.drawString(2*cm,1*cm,'Pollos Asados El ING · Equipo 4 · Estación TLA · Marzo 2024')
     canvas.drawRightString(19*cm,1*cm,str(doc.page));canvas.restoreState()
 
 if __name__=='__main__':

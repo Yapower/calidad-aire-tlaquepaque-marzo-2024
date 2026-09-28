@@ -2,6 +2,10 @@
 
 Presentamos nuestro análisis retrospectivo como **Pollos Asados El ING**.
 
+**Equipo 4 · Responsable de entrega: Eduardo Yoab Venegas García · Estación TLA.**
+
+Integrantes: Eduardo Yoab Venegas García, Jonathan Emmanuel Alcantar López y Ana Yoseline Acosta Arreola.
+
 ## Reproducir
 
 1. Instalar Python 3.10 o superior y las bibliotecas `pandas openpyxl numpy matplotlib reportlab`.
@@ -11,7 +15,7 @@ Presentamos nuestro análisis retrospectivo como **Pollos Asados El ING**.
    python analizar_tlaquepaque.py "Hoja de cálculo sin título (1).xlsx" salida/
    ```
 
-La ejecución genera `horas_procesadas.csv`, `dias_procesados.csv`, `resumen.json`, las dos visualizaciones y el reporte en PDF.
+La ejecución genera `horas_procesadas.csv`, `dias_procesados.csv`, `resumen.json`, las dos visualizaciones y el reporte en PDF. También crea una copia con el nombre solicitado para la entrega de Sprint 1: `26B_AVI_d04_sp1_eq4_Venegas_Garcia_Eduardo_Yoab.pdf`.
 
 ## Datos y alcance
 
@@ -25,6 +29,6 @@ Nuestra pollería está a **dos cuadras de la estación TLA**. Distinguimos las 
 
 Fuentes: [SEMADET, datos históricos](https://aire.jalisco.gob.mx/Dhistoricos), [NOM-172-SEMARNAT-2023](https://sinaica.inecc.gob.mx/archivo/noms/NOM-172-SEMARNAT-2023-Indice-AIRE-y-SALUD.pdf) y [EPA, partículas generadas al cocinar y medidas de control](https://www.epa.gov/indoor-air-quality-iaq/sources-indoor-particulate-matter-pm).
 
-Antes de entregar el trabajo completaremos la bitácora real del líder y confirmaremos el equipo y la nomenclatura Sprint 1/Sprint 2.
+Incluimos una bitácora **propuesta** para que cada integrante valide las actividades y el cumplimiento antes de entregarla. Usamos `sp1` en el nombre del PDF porque la consigna llama a esta entrega la versión final del Sprint 1; el apartado de bitácora menciona Sprint 2 y queda pendiente de confirmación.
 
 Repositorio: https://github.com/Yapower/calidad-aire-tlaquepaque-marzo-2024
